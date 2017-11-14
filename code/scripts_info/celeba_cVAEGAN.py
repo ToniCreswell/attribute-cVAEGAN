@@ -142,8 +142,6 @@ if __name__=='__main__':
 
 
 			#GEN loss
-			# MU, LOGVAR, PREDY = cvae.encode(x)
-			# outRec_detach_enc = cvae.decode(PREDY, cvae.re_param(MU,LOGVAR).detach()) #detach from encoder - don't want adv grads going thru encoder
 			pXfakeRec = dis(outRec)
 			pXfakeRand = dis(cvae.decode(yRand, zRand))
 			genLoss = 0.5 * (bce(pXfakeRec, realLabel,size_average=False) +\
@@ -189,7 +187,7 @@ if __name__=='__main__':
 			if cvae.useCUDA:
 				xTest = Variable(xTest).cuda().data
 				yTest = Variable(yTest).cuda()
-				outputs, outMu, outLogVar, outY = cvae(Variable(xTest)) #should be able to remove the else! #TODO and keep just outputs of vae on new line
+				outputs, outMu, outLogVar, outY = cvae(Variable(xTest)) 
 			else:
 				yTest = Variable(yTest)
 
