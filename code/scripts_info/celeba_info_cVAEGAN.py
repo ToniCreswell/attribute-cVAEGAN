@@ -104,16 +104,12 @@ def evaluate(cvae, testLoader, exDir, e=1, classifier=None):  #e is the epoch
 	predLabel = torch.floor(outY)
 
 	classScoreTest= binary_class_score(predLabel, yTest, thresh=0.5)
-	# classScoreTest = torch.eq(predLabel.type_as(yTest), yTest).float().sum()/yTest.size(0)
 	print 'classification test:', classScoreTest.data[0]
 
 	save_image(xTest.data, join(exDir,'input.png'))
 	save_image(outputs.data, join(exDir,'output_'+str(e)+'.png'))
 
 	rec1, rec0 = label_switch(xTest.data, yTest, cvae, exDir=exDir)
-	# soft_label_switch(xTest.data, yTest, cvae, exDir=exDir, l0=0.1, l1=0.9)
-	# soft_label_switch(xTest.data, yTest, cvae, exDir=exDir, l0=0.2, l1=0.8)
-
 
 	# for further eval
 	if e == 'evalMode' and classer is not None:
@@ -152,7 +148,7 @@ if __name__=='__main__':
 	cvae = CVAE1(nz=opts.nz, imSize=64, fSize=opts.fSize)
 	dis = DISCRIMINATOR(imSize=64, fSize=opts.fSize) 
 	aux = AUX(nz=opts.nz)
-	classer = CLASSIFIER(imSize=64, fSize=64) #for eval only! #may vary depending on classers used -- hard code for simplicty
+	classer = CLASSIFIER(imSize=64, fSize=64) #for eval only! 
 
 	if cvae.useCUDA:
 		print 'using CUDA'
@@ -258,8 +254,6 @@ if __name__=='__main__':
 
 
 			#GEN loss
-			# MU, LOGVAR, PREDY = cvae.encode(x)
-			# outRec_detach_enc = cvae.decode(PREDY, cvae.re_param(MU,LOGVAR).detach()) #detach from encoder - don't want adv grads going thru encoder
 			pXfakeRec = dis(outRec)
 			pXfakeRand = dis(cvae.decode(yRand, zRand))
 			genLoss = 0.5 * (bce(pXfakeRec, realLabel,size_average=False) +\
