@@ -47,7 +47,7 @@ def get_args():
 	parser.add_argument('--lr', default=1e-3, type=float)
 	parser.add_argument('--fSize', default=64, type=int)  #multiple of filters to use
 	parser.add_argument('--outDir', default='../../Experiments/celebA_info_cVAEGAN', type=str)
-	parser.add_argument('--commit', required=True, type=str)
+	parser.add_argument('--commit', default='None', type=str)
 	parser.add_argument('--alpha', default=1, type=float) #weight on the KL divergance
 	parser.add_argument('--gamma', default=1, type=float) #weight on the aux enc loss
 	parser.add_argument('--delta', default=1, type=float) #weight on the adversarial loss
