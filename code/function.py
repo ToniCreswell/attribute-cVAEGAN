@@ -185,4 +185,9 @@ def rand_one_hot(noSamples, noLabels, useCUDA):
 	else:
 		return y
 
+def binary_class_score(pred, target, thresh=0.5):
+	predLabel = torch.gt(pred, thresh)
+	classScoreTest = torch.eq(predLabel, target.type_as(predLabel))
+	return  classScoreTest.float().sum()/target.size(0)
+
 
