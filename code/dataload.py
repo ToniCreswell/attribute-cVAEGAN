@@ -50,7 +50,7 @@ class CELEBA(data.Dataset):
             self.train_data = np.load(join(self.root, self.filename, 'xTrain.npy'), mmap_mode='r')[100:]
             self.train_data = self.train_data.transpose((0, 2, 3, 1))  # convert to HWC
             train_labels = np.load(join(self.root, self.filename, 'yAllTrain.npy'))[100:, self.idx]
-            self.train_labels = (train_labels.astype(int)+1) /2
+            self.train_labels = (train_labels.astype(int)+1) // 2
             print np.shape(self.train_labels), np.shape(self.train_data)
             print np.unique(self.train_labels)
 
@@ -58,7 +58,7 @@ class CELEBA(data.Dataset):
             self.test_data = np.load(join(self.root, self.filename, 'xTrain.npy'), mmap_mode='r')[:100]
             self.test_data = self.test_data.transpose((0, 2, 3, 1))  # convert to HWC
             test_labels = np.load(join(self.root, self.filename, 'yAllTrain.npy'))[:100, self.idx]
-            self.test_labels = (test_labels.astype(int)+1) /2
+            self.test_labels = (test_labels.astype(int)+1) // 2
 
 
     def __getitem__(self, index):
