@@ -2,7 +2,7 @@
 
 (New version of the code using ResNets will be provided soon to reproduce results in the latest verision of our paper: https://arxiv.org/pdf/1711.05175.pdf)
 
-## Updates to our paper and code include:
+## Updates to our paper and code (coming soon) include:
 1. Classification results on CelebA facial attributes
 2. Use of ResNets to improve image quality
 
