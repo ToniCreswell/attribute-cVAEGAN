@@ -1,5 +1,11 @@
 # Conditional Autoencoders with Adversarial Information Factorization
 
+(New version of the code using ResNets will be provided soon to reproduce results in the latest verision of our paper: https://arxiv.org/pdf/1711.05175.pdf)
+
+## Updates to our paper and code include:
+1. Classification results on CelebA facial attributes
+2. Use of ResNets to improve image quality
+
 ## To use code:
 1. Download the celebA dataset from http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
 2. Install dependancies listed in requirements.txt
