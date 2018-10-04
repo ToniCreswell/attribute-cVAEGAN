@@ -44,7 +44,7 @@ def get_args():
 	parser.add_argument('--batchSize', default=64, type=int)
 	parser.add_argument('--maxEpochs', default=10, type=int)
 	parser.add_argument('--nz', default=100, type=int)
-	parser.add_argument('--lr', default=1e-3, type=float)
+	parser.add_argument('--lr', default=2e-4, type=float)
 	parser.add_argument('--fSize', default=64, type=int)  #multiple of filters to use
 	parser.add_argument('--outDir', default='../../Experiments/celebA_info_cVAEGAN', type=str)
 	parser.add_argument('--commit', default='None', type=str)

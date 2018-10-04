@@ -20,7 +20,7 @@ class DISCRIMINATOR(nn.Module):
 		self.fSize = fSize
 		self.imSize = imSize
 
-		inSize = imSize / ( 2 ** 4)
+		inSize = imSize // ( 2 ** 4)
 		self.numLabels = numLabels
 
 		self.dis1 = nn.Conv2d(3, fSize, 5, stride=2, padding=2)
@@ -70,7 +70,7 @@ class CVAE(nn.Module):
 		self.nz = nz
 		self.imSize = imSize
 
-		inSize = imSize / (2 ** 4)
+		inSize = imSize // (2 ** 4)
 		self.inSize = inSize
 		self.numLabels = numLabels
 
@@ -164,7 +164,7 @@ class CVAE1(nn.Module):
 		self.imSize = imSize
 		self.sig = sig
 
-		inSize = imSize / (2 ** 4)
+		inSize = imSize // (2 ** 4)
 		self.inSize = inSize
 
 		self.enc1 = nn.Conv2d(3, fSize, 5, stride=2, padding=2)

@@ -40,7 +40,7 @@ def get_args():
 	parser.add_argument('--batchSize', default=64, type=int)
 	parser.add_argument('--maxEpochs', default=10, type=int)
 	parser.add_argument('--nz', default=100, type=int)
-	parser.add_argument('--lr', default=1e-3, type=float)
+	parser.add_argument('--lr', default=2e-4, type=float)
 	parser.add_argument('--fSize', default=64, type=int)  #multiple of filters to use
 	parser.add_argument('--outDir', default='../../Experiments/celebA_cVAEGAN', type=str)
 	parser.add_argument('--commit', default='None', type=str)
@@ -209,7 +209,7 @@ if __name__=='__main__':
 			#check reconstructions after each 10 epochs
 			outputs, outMu, outLogVar, outY = cvae(Variable(xTest))
 
-			bceLossTest, klLossTest = vae_loss_fn(rec_x=outputs.data, x=xTest, mu=outMu, logVar=outLogVar)
+			bceLossTest, klLossTest = vae_loss_fn(rec_x=outputs, x=Variable(xTest), mu=outMu, logVar=outLogVar)
 			maxVal, predLabel = torch.max(outY, 1)
 			classScoreTest = torch.eq(predLabel, yTest).float().sum()/yTest.size(0)
 			print 'classification test:', classScoreTest.data[0]
