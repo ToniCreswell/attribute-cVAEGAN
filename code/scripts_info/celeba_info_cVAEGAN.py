@@ -172,7 +172,7 @@ if __name__=='__main__':
 		try:  #may already have an eval folder
 			os.mkdir(evalDir)
 		except:
-			'print file already created'
+			print 'file already created'
 		_, _ = evaluate(cvae, testLoader, evalDir, e='evalMode', classifier=classer)
 		exit()
 
