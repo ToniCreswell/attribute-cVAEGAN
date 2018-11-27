@@ -287,7 +287,7 @@ if __name__=='__main__':
 
 			if i%100==1:
 				i+=1
-				print '[%d, %d] loss: %0.5f, gen: %0.5f, dis: %0.5f, bce: %0.5f, kl: %0.5f, aux: %0.5f, time: %0.3f' % \
+				print '[%d, %d] loss: %0.5f, dis: %0.5f, gen: %0.5f, bce: %0.5f, kl: %0.5f, aux: %0.5f, time: %0.3f' % \
 		 			(e, i, epochLoss/i, epochLoss_dis/i, epochLoss_gen/i, epochLoss_bce/i, epochLoss_kl/i, epochLoss_aux/i, time() - TIME)
 
 	
